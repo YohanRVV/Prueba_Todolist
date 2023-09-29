@@ -22,7 +22,7 @@ class Email
     public function enviarConfirmacion()
     {
         // Crear el objeto de email
-        $mail = new PHPMailer();
+        $mail = new PHPMailer(true);
 
         // Configurar SMTP
         $mail->isSMTP();
@@ -32,13 +32,7 @@ class Email
         $mail->Password = $_ENV['MAIL_PASS'];
         $mail->SMTPSecure = 'tls';
         $mail->Port = $_ENV['MAIL_PORT'];
-        // Contenido del email
-        $mail->setFrom('correo@axity.com', 'axity');
-        $mail->addAddress($this->email);
-        $mail->Subject = 'Reestablece tu cuenta';
-
-
-
+        
         // Contenido del email
         $mail->setFrom('correo@axity.com', 'axity');
         $mail->addAddress($this->email);
